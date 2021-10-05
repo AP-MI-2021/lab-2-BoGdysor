@@ -36,39 +36,6 @@ def test_get_largest_prime_bellow():
     assert get_largest_prime_below(3) == 2
 
 
-def is_palindrome(n) -> bool:
-    """
-    5.Determină daca un numar dat este palindrom
-    :param n: numar
-    :return:  True daca numarul dat este palindrom, altfel False
-    """
-    overturned = 0
-    copy_of_n = n
-    while n:
-        overturned = overturned * 10 + n % 10
-        n = n // 10
-    if overturned == copy_of_n:
-        return True
-    return False
-
-
-def is_superprime(n) -> bool:
-    """
-    6.Determina daca un numar este superprim: daca toate prefixele sale sunt prime
-    :param n: numar natural
-    :return:
-    """
-    lst = []
-    while n:
-        lst.append(n)
-        n = n // 10
-    list_length = len(lst)
-    for i in range(0, list_length):
-        if not is_prime(lst[i]):
-            return False
-    return True
-
-
 def get_perfect_squares(start: int, end: int) -> List[int]:
     """
     12.Afiseaza toate patratele perfecte dintr-un interval inchis dat.
