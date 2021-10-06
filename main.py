@@ -61,15 +61,43 @@ def test_get_perfect_squares():
     assert get_perfect_squares(4, 4) == [4]
 
 
+def is_superprime(n) -> bool:
+    """
+    6.Determina daca un numar este superprim: daca toate prefixele sale sunt prime
+    :param n: numar natural
+    :return: True daca acesta este superprim, altfel False
+    """
+    lst = []
+    while n:
+        lst.append(n)
+        n = n // 10
+    list_length = len(lst)
+    for i in range(0, list_length):
+        if not is_prime(lst[i]):
+            return False
+    return True
+
+
+def test_is_superprime():
+    assert is_superprime(233) is True
+    assert is_superprime(237) is False
+    assert is_superprime(73) is True
+    assert is_superprime(71) is True
+    assert is_superprime(353) is False
+    assert is_superprime(88) is False
+
+
 test_get_perfect_squares()
 test_get_largest_prime_bellow()
+test_is_superprime()
 
 
 def main():
     while True:
         print("1.Ultimul numar prim mai mic decat un numar dat.")
         print("2.Afiseaza toate patratele perfecte dintr-un interval inchis dat.")
-        print("3.Iesire")
+        print("3.Determină dacă un număr introdus este superprim")
+        print("4.Iesire")
         optiune = int(input("selectati optiunea: "))
         if optiune == 1:
             n = int(input("\nIntroduceti numarul n: "))
@@ -82,6 +110,12 @@ def main():
             y = int(input("Introduceti unde sa se termine intervalul: "))
             print(get_perfect_squares(x, y))
         elif optiune == 3:
+            n = int(input("Intoruceti numarul pe care vreti sa il verificati: "))
+            if is_superprime(n) is True:
+                print("Numarul {} este superprim".format(n))
+            else:
+                print("Numarul {} nu este superprim".format(n))
+        elif optiune == 4:
             break
         else:
             print("Optiune invalida")
